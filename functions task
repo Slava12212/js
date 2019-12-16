@@ -37,39 +37,6 @@ function isEven(number) {
   }
   
   3)
-  //ask
-  function countBs (testString) {
-  	let stringLength = testString.length
-    let countLetter = 0
-	for ( let i=0; i<= stringLength; i++ )
-    {
-    let letter = testString.charAt(i)
-    if (letter = "B") { countLetter++ }
-    }
-  return countLetter;
-}
-
-// ask  if (letter = "B") {
-function countBs (testString) {
-  	let stringLength = testString.length
-    let countLetter = 0
-    let i=0
-    
-	while (i<= stringLength)
-    {
-    
-      
-    let letter = testString.charAt(i)
-    i++
-    if (letter == "B") { 
-      countLetter++
-      console.log (countLetter)
-    }
-      
-    }
-  return countLetter;
-}
-
 //work
 function countBs (testString) {
   	let stringLength = testString.length

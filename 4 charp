@@ -21,3 +21,66 @@ function sum(range) {
 	}, 0)
 }
 4.2
+function reverseArray(array) {
+	let revArr = [];
+
+	for (let i = array.length - 1; i >= 0; --i)
+		revArr.push(array[i]);
+
+	return revArr;
+}
+
+
+function reverseArrayInPlace(array) {
+	let i = Math.floor(array.length / 2);
+
+	for (let l = 0; l < i; ++l) {
+		let tmp = array[array.length - l - 1];
+		array[array.length - l - 1] = array[l];
+		array[l] = tmp;
+	}
+
+	return array;
+}
+4.3
+//let or var list={} bug.
+function arrayToList(arr) {
+	for (let i = arr.length - 1; i >= 0; --i) {
+        let list = {};
+		let nextRest = list || null;
+		
+		list["value"] = arr[i];
+		list["rest"] = nextRest;
+	}
+	return list;
+}
+
+function listToArray(list) {
+	let arr = [];
+	arr.push(list.value);
+	let rest = list.rest;
+	while (rest) {
+		arr.push(rest.value);
+		rest = rest["rest"];
+	}
+	return arr;
+}
+function prepend(elem, list) {
+	return {value: elem, rest: list}
+}
+function nth(list, index) {
+	if (!list.rest && index != 0) return undefined;
+	return (index != 0) ? nth(list.rest, --index) : list.value;
+}
+4.4
+function deepEqual(a, b) {
+	if ((typeof a == "object" && typeof b == "object") && (a != null || b != null)) {
+		for (let i = 0, j = 0; i < Object.keys(a).length, j < Object.keys(b).length; ++i, ++j) {
+			var result = deepEqual(a[Object.keys(a)[i]], b[Object.keys(b)[j]]);
+			if (result == false) break;
+		}
+		return result;
+	} else {
+		return (a === b);
+	}
+}

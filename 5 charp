@@ -1,0 +1,47 @@
+5.1
+console.log(arrays.reduce(function (arr, current) {
+	return arr.concat(current);
+}));
+5.2
+let motherAge = [];
+
+for (let i = 0; i < ancestry.length; ++i) {
+	let mother = byName[ancestry[i].mother];
+
+	if (mother != null) {
+		let age = ancestry[i].born - mother.born;
+		motherAge.push(age);
+	}
+}
+console.log(average(motherAge));
+5.3
+let centuryAge = {};
+
+ancestry.forEach(function (person) {
+	if (Math.ceil(person.died / 100) in centuryAge) {
+		centuryAge[Math.ceil(person.died / 100)].push(person.died - person.born);
+	} else {
+		centuryAge[Math.ceil(person.died / 100)] = [];
+		centuryAge[Math.ceil(person.died / 100)].push(person.died - person.born);
+	}
+});
+
+for (let century in centuryAge) {
+	console.log(average(centuryAge[century]));
+}
+5.4
+function every(arr, func) {
+	for (let i = 0; i < arr.length; ++i) {
+		if (!func(arr[i])) return false;
+	}
+
+	return true;
+}
+
+function some(arr, func) {
+	for (let i = 0; i < arr.length; ++i) {
+		if (func(arr[i])) return true;
+	}
+
+	return false;
+}
